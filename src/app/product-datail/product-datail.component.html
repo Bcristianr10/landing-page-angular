@@ -1,0 +1,19 @@
+<ng-container  *ngIf="!loading">
+    <h4>{{ product?.name }}</h4>
+    <!-- <p class="m-0"><b>Product ID</b>: {{ product?.id }}</p> -->
+    <!-- <p class="m-0"><b>Product Name</b>: {{ product?.name }}</p> -->
+    <div class="d-flex gap-1">
+        <b>Price: </b>
+        <p class="m-0" [ngStyle]="{'color': color}">{{ product?.price | currency }}</p>
+    </div>
+    <p class="m-0" *ngIf="product?.description" ><b>Description</b>: {{ product?.description }}</p>
+</ng-container>
+
+<ng-container *ngIf="loading">
+    <div class="d-flex gap-2 justify-content-center align-items-center" style="height: 90vh;">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="m-0">Loading...</p>
+    </div>
+</ng-container>

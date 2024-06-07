@@ -1,0 +1,21 @@
+<p>products works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productsList">
+        <th scope="row">{{ product.id }}</th>
+        <td>{{ product.name }}</td>
+        <td [ngClass]="{'text-danger': product.price > 3000}">{{ product.price | currency }}</td>
+        <td>
+            <button class="btn btn-primary" [routerLink]="['/products', product.id]">Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
