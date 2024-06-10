@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { ProductDatailComponent } from './product-datail/product-datail.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DniComponent } from './contact/dni/dni.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,14 @@ import { ProductDatailComponent } from './product-datail/product-datail.componen
     HomeComponent,
     ProductsComponent,
     ContactComponent,
-    ProductDatailComponent
+    ProductDatailComponent,
+    DniComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, // for template driven forms
+    ReactiveFormsModule // for reactive forms
   ],
   providers: [],
   bootstrap: [AppComponent]

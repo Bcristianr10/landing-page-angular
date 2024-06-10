@@ -1,1 +1,36 @@
-<p>contact works!</p>
+<div class="container">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" [ngClass]="{'is-invalid': hasError('name', 'required')}" class="form-control" id="name" aria-describedby="nameHelp" formControlName="name">
+          <div class="text-danger" *ngIf="hasError('name', 'required')">Name is required</div>
+        </div>
+        <div class="col-12 row">            
+            <div class="mb-3 col-6 ">
+            <label for="exampleInputEmail1" class="form-label">Indentification Type</label>
+            <select class="form-select" [ngClass]="{'is-invalid': hasError('identficationType', 'required')}" aria-label="Default select example" formControlName="identficationType">
+                <option selected value="">Open this select indentification type</option>
+                <option *ngFor="let identificationType of identificationTypes" [value]="identificationType">{{identificationType}}</option>
+            </select>
+            <div class="text-danger" *ngIf="hasError('identficationType', 'required')">Identification type is required</div>
+            </div>        
+            <div class="mb-3 col-6" *ngIf="contactForm.get('identficationType')?.value">
+            <label for="exampleInputEmail1" class="form-label">Number</label>
+            <input type="identificationNumber" placeholder="Type: {{contactForm.get('identficationType')?.value}}" [ngClass]="{'is-invalid': hasError('identificationNumber', 'required')}" class="form-control" id="identificationNumber" aria-describedby="emailHelp" formControlName="identificationNumber">          
+            <div class="text-danger" *ngIf="hasError('identificationNumber', 'required')">Identification number is required</div>          
+            </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" [ngClass]="{'is-invalid': hasError('email', 'required') || hasError('email', 'email')}" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
+          <div class="text-danger" *ngIf="hasError('email', 'required')">Email is required</div>
+          <div class="text-danger" *ngIf="hasError('email', 'email')">Email invalid</div> 
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Message</label>
+          <textarea class="form-control" [ngClass]="{'is-invalid': hasError('message', 'required')}" id="exampleInputPassword1" rows="3" formControlName="message"></textarea>
+          <div class="text-danger" *ngIf="hasError('message', 'required')">Message is required</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
